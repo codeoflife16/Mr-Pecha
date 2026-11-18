@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Not All Heroes Wear Uniforms ♡</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #100f10;
+    color: #f8eee8;
+    font-family: 'Poppins', sans-serif;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+section {
+    padding: 90px 22px;
+}
+
+.serif {
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* INTRO */
+
+.intro {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+    background:
+        radial-gradient(circle at top, #493638, transparent 60%),
+        #100f10;
+}
+
+.envelope {
+    font-size: 65px;
+    margin-bottom: 25px;
+    animation: float 3s infinite ease-in-out;
+}
+
+.intro h1 {
+    font: 500 clamp(48px, 9vw, 76px) 'Cormorant Garamond', serif;
+}
+
+.intro p {
+    color: #c6b3ac;
+    font-size: 13px;
+    line-height: 2;
+    margin: 18px auto 30px;
+    max-width: 400px;
+}
+
+.btn {
+    border: 1px solid #c18c83;
+    background: #a66c69;
+    color: white;
+    padding: 13px 28px;
+    border-radius: 30px;
+    font-size: 12px;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: #d09c91;
+    transform: translateY(-3px);
+}
+
+/* HERO */
+
+.hero {
+    display: none;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+    background:
+        linear-gradient(#100f10 0%, #2a2021 50%, #100f10 100%);
+}
+
+.hero.show {
+    display: flex;
+}
+
+.hero small {
+    color: #d19b91;
+    letter-spacing: 5px;
+    font-size: 10px;
+}
+
+.hero h1 {
+    font: 500 clamp(55px, 10vw, 105px)/.95 'Cormorant Garamond', serif;
+    margin: 30px 0;
+}
+
+.hero h1 span {
+    color: #d6a49b;
+    font-style: italic;
+}
+
+.hero p {
+    color: #d0c1bb;
+    font-size: 13px;
+    line-height: 2.1;
+    max-width: 510px;
+    margin: auto;
+}
+
+.scroll {
+    color: #c18c83;
+    letter-spacing: 3px;
+    font-size: 10px;
+    margin-top: 55px;
+}
+
+/* APPRECIATION */
+
+.appreciation {
+    background: #f7eee8;
+    color: #382b2b;
+    text-align: center;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.heading small {
+    color: #a66c69;
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+.heading h2 {
+    font: 500 clamp(36px, 6vw, 55px) 'Cormorant Garamond', serif;
+    margin-top: 12px;
+}
+
+.heading p {
+    color: #927b76;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.cards {
+    max-width: 950px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 18px;
+}
+
+.card {
+    padding: 32px 20px;
+    background: #fffaf6;
+    border: 1px solid #eadbd5;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+}
+
+.card .emoji {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font: 600 25px 'Cormorant Garamond', serif;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #8d7772;
+    font-size: 11px;
+    line-height: 2;
+}
+
+/* CINEMATIC PHOTO */
+
+.movie-section {
+    padding: 100px 20px;
+    background:
+        radial-gradient(ellipse at center, #332526, #100f10 75%);
+}
+
+.movie-poster {
+    max-width: 850px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    min-height: 650px;
+    background: #211a1b;
+    box-shadow: 0 25px 80px #00000080;
+}
+
+.movie-poster {
+    max-width: 850px;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    background: #211a1b;
+    box-shadow: 0 25px 80px #00000080;
+}
+
+.movie-poster img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.movie-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.05) 0%,
+            rgba(0,0,0,.1) 30%,
+            rgba(0,0,0,.65) 65%,
+            rgba(0,0,0,.95) 100%
+        );
+}
+
+.movie-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 45px;
+    text-align: center;
+}
+
+.movie-content .label {
+    color: #e2b4a7;
+    letter-spacing: 6px;
+    font-size: 10px;
+}
+
+.movie-content h2 {
+    font: 500 clamp(45px, 8vw, 82px)/.95 'Cormorant Garamond', serif;
+    margin: 18px 0;
+    text-shadow: 0 3px 15px #000;
+}
+
+.movie-content p {
+    color: #f2e5df;
+    font: italic 22px/1.5 'Cormorant Garamond', serif;
+    max-width: 600px;
+    margin: auto;
+}
+
+.movie-number {
+    color: #d6a49b;
+    font-size: 9px;
+    letter-spacing: 4px;
+    margin-top: 25px;
+}
+
+/* PERSONAL MESSAGE */
+
+.message-section {
+    background: #f7eee8;
+    color: #382b2b;
+}
+
+.message {
+    max-width: 720px;
+    margin: auto;
+    padding: 45px;
+    background: #fffaf6;
+    border: 1px solid #eadbd5;
+}
+
+.message .top {
+    color: #a66c69;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-align: center;
+}
+
+.message h2 {
+    text-align: center;
+    font: 500 44px 'Cormorant Garamond', serif;
+    margin: 22px 0 30px;
+}
+
+.message p {
+    font: 400 21px/1.8 'Cormorant Garamond', serif;
+    color: #765f5c;
+    margin-bottom: 20px;
+}
+
+.message .signature {
+    text-align: right;
+    color: #a66c69;
+    font: italic 27px 'Cormorant Garamond', serif;
+    margin-top: 30px;
+}
+
+/* HEROES SECTION */
+
+.heroes-section {
+    text-align: center;
+    background:
+        linear-gradient(#21191a, #100f10);
+    padding: 110px 22px;
+}
+
+.heroes-section small {
+    color: #d19b91;
+    letter-spacing: 5px;
+    font-size: 10px;
+}
+
+.heroes-section h2 {
+    font: 500 clamp(45px, 8vw, 78px)/1.05 'Cormorant Garamond', serif;
+    max-width: 850px;
+    margin: 30px auto;
+}
+
+.heroes-section h2 span {
+    color: #d6a49b;
+    font-style: italic;
+}
+
+.heroes-section p {
+    max-width: 650px;
+    margin: auto;
+    color: #d4c2bd;
+    font: 400 22px/1.8 'Cormorant Garamond', serif;
+}
+
+/* FINAL */
+
+.final-section {
+    text-align: center;
+    padding: 100px 20px;
+    background: #f7eee8;
+    color: #382b2b;
+}
+
+.final-section h2 {
+    font: 500 clamp(43px, 8vw, 72px) 'Cormorant Garamond', serif;
+    margin: 25px 0;
+}
+
+.final-section p {
+    color: #927b76;
+    font-size: 13px;
+    line-height: 2;
+    max-width: 500px;
+    margin: auto;
+}
+
+.heart {
+    font-size: 35px;
+    color: #a66c69;
+    margin-top: 25px;
+    animation: beat 1.5s infinite;
+}
+
+footer {
+    text-align: center;
+    padding: 22px;
+    background: #100f10;
+    color: #b99b96;
+    font-size: 9px;
+    letter-spacing: 3px;
+}
+
+/* ANIMATIONS */
+
+@keyframes float {
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes beat {
+    50% { transform: scale(1.2); }
+}
+
+/* MOBILE */
+
+@media(max-width: 600px) {
+    section {
+        padding: 70px 18px;
+    }
+
+    .movie-poster {
+        min-height: 570px;
+    }
+
+    .movie-content {
+        padding: 25px 18px;
+    }
+
+    .movie-content p {
+        font-size: 19px;
+    }
+
+    .message {
+        padding: 28px 22px;
+    }
+
+    .message p {
+        font-size: 19px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- OPENING -->
+
+<section class="intro" id="intro">
+    <div>
+        <div class="envelope">💌</div>
+        <h1>Hey You...</h1>
+        <p>
+            Not every appreciation needs a special occasion.
+            But today, I wanted to make something just for you.
+        </p>
+        <button class="btn" id="openBtn">Open your surprise ♡</button>
+    </div>
+</section>
+
+<!-- MAIN INTRO -->
+
+<section class="hero" id="hero">
+    <div>
+        <small>A LITTLE STORY ABOUT SOMEONE SPECIAL</small>
+        <h1>To the man<br><span>who inspires.</span></h1>
+        <p>
+            Some people inspire us without even knowing it.
+            You are one of those people.
+            This little space is a reminder of how much
+            you are appreciated.
+        </p>
+        <div class="scroll">A STORY DEDICATED TO YOU ↓</div>
+    </div>
+</section>
+
+<!-- APPRECIATION CARDS -->
+
+<section class="appreciation">
+    <div class="heading">
+        <small>THE THINGS I ADMIRE</small>
+        <h2>It's the little things</h2>
+        <p>Some qualities deserve to be celebrated.</p>
+    </div>
+
+    <div class="cards">
+        <div class="card">
+            <div class="emoji">✨</div>
+            <h3>Your Dreams</h3>
+            <p>
+                The way you dream big and keep moving
+                towards the person you want to become.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="emoji">🤍</div>
+            <h3>Your Heart</h3>
+            <p>
+                Your kindness, your care, and the way
+                you make people feel valued.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="emoji">🌍</div>
+            <h3>Your Strength</h3>
+            <p>
+                Handling responsibilities and finding
+                the strength to keep going, even from far away.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="emoji">🌷</div>
+            <h3>Simply You</h3>
+            <p>
+                There is something special about being
+                genuine, thoughtful, and unapologetically yourself.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ONE CINEMATIC PHOTO -->
+
+<section class="movie-section">
+    <div class="heading">
+        <small>THE MAIN CHARACTER</small>
+        <h2>One picture. A thousand feelings.</h2>
+        <p>Some people deserve their own movie poster.</p>
+    </div>
+
+    <div class="movie-poster">
+        <img src="image.png" alt="A person who inspires me">
+
+        <div class="movie-overlay"></div>
+
+        <div class="movie-content">
+            <div class="label">A STORY OF DREAMS & DETERMINATION</div>
+
+            <h2>The Man Who<br>Dreamt & Became.</h2>
+
+            <p>
+                "You are the person who inspires me
+                to become everything I dream of being."
+            </p>
+
+            <div class="movie-number">
+                A LITTLE TRIBUTE · MADE WITH APPRECIATION
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PERSONAL LETTER -->
+
+<section class="message-section">
+    <div class="heading">
+        <small>WORDS I REALLY MEAN</small>
+        <h2>A little something from me</h2>
+    </div>
+
+    <div class="message">
+        <div class="top">A NOTE FROM THE HEART</div>
+
+        <h2>Dear You,</h2>
+
+        <p>
+            I don't know if I tell you this enough, but you inspire
+            me a lot. You make me want to work harder, dream bigger,
+            and become the person I have always wanted to be.
+        </p>
+
+        <p>
+            There is something about your characteristics that
+            reminds me of my dad. Maybe that's why I admire those
+            qualities in you so much. The strength, the care,
+            the sense of responsibility and the way you handle life.
+            That is honestly one of the things I love most about you.
+        </p>
+
+        <p>
+            And please, be careful with your bike.
+            No matter how much you enjoy riding, remember that
+            someone genuinely wishes for you to always reach home safe.
+        </p>
+
+        <p>
+            Keep chasing your dreams. Keep becoming the person
+            you want to be. I hope life gives you every opportunity
+            and happiness you deserve.
+        </p>
+
+        <div class="signature">Always cheering for you ♡</div>
+    </div>
+</section>
+
+<!-- A SECOND LETTER: THE MORE PERSONAL ONE -->
+
+<section class="message-section">
+    <div class="heading">
+        <small>THE WORDS I WANTED YOU TO READ</small>
+        <h2>If I could tell you one more thing...</h2>
+    </div>
+
+    <div class="message">
+        <div class="top">A LETTER, JUST FOR YOU</div>
+
+        <h2>Dear Hey You,</h2>
+
+        <p>
+            I don't really know where to begin, because there are so many little
+            things I want to tell you. First of all, thank you for being the
+            reason behind so many of my smiles. You probably have absolutely no
+            idea how often you make me smile. Sometimes I catch myself smiling
+            at my phone just because your name appears on the screen.
+        </p>
+
+        <p>
+            And yes, I wait for your texts. I check my phone more often than I
+            should, hoping to see a message from you. Even an ordinary
+            conversation with you can turn my day around.
+        </p>
+
+        <p>
+            I love seeing your face on video calls. Sometimes I don't even need
+            a conversation about anything extraordinary. Just seeing you,
+            looking at you, listening to you talk... somehow that is enough to
+            make me happy.
+        </p>
+
+        <p>
+            And I have to admit, you give me butterflies in ways that are not
+            always innocent. You cross my mind in the sweetest, most
+            distracting ways. Sometimes I just wish you were here, close enough
+            for me to hold you. I imagine holding your hands, looking at you
+            while holding them, and forgetting for a little while that the
+            rest of the world even exists. I don't know why that simple
+            thought makes me so happy, but it does.
+        </p>
+
+        <p>
+            I know I can be annoying. I overthink, I talk a lot, and sometimes
+            I probably make a big deal out of the smallest things. But whatever
+            I feel, I feel it genuinely. I may not always know how to express
+            myself perfectly, but I hope you can see the affection behind my
+            words and all the little ways I try to show that I care.
+        </p>
+
+        <p>
+            I don't want to rush anything or put any expectations on you. I
+            would rather let things unfold naturally, one conversation and
+            one little moment at a time. I just hope that, as you get to know
+            me, you will accept all the little parts of me too — the talkative
+            one, the overthinker, the silly one, and the one who smiles a
+            little too much because of you.
+        </p>
+
+        <p>
+            I hope we get to make beautiful memories together someday. Until
+            then, keep being you, keep chasing everything you dream of, and
+            please take care of yourself. I hope life is gentle with you and
+            gives you all the happiness you deserve.
+        </p>
+
+        <p>
+            And if you ever wonder whether someone is quietly rooting for you,
+            just know that I am. More than you probably realise.
+        </p>
+
+        <div class="signature">With all my warmth,<br>Your girl, perhaps? ♡</div>
+    </div>
+</section>
+
+<!-- NOT ALL HEROES -->
+
+<section class="heroes-section">
+    <small>AND THIS IS WHAT I WANT YOU TO REMEMBER</small>
+
+    <h2>
+        Not all heroes wear uniforms.
+        <span>Some simply fulfil their promises.</span>
+    </h2>
+
+    <p>
+        Some heroes don't need a uniform to make a difference.
+        Some are miles away from home, carrying dreams,
+        responsibilities and love in their hearts.
+        They keep going, they show up, and they fulfil
+        their responsibilities while loving unconditionally.
+        Sometimes, the quietest heroes are the ones
+        who inspire us the most.
+    </p>
+</section>
+
+<!-- ENDING -->
+
+<section class="final-section">
+    <small>HAPPY MEN'S DAY</small>
+
+    <h2>
+        Keep dreaming.<br>
+        Keep inspiring.
+    </h2>
+
+    <p>
+        May you achieve everything you work for.
+        May your journeys always be safe,
+        your heart always be happy,
+        and your dreams always find their way to you.
+    </p>
+
+    <div class="heart">♡</div>
+</section>
+
+<footer>
+    MADE WITH APPRECIATION · JUST FOR YOU ♡
+</footer>
+
+<script>
+const openBtn = document.getElementById("openBtn");
+const intro = document.getElementById("intro");
+const hero = document.getElementById("hero");
+
+openBtn.addEventListener("click", function() {
+    intro.style.display = "none";
+    hero.classList.add("show");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+</script>
+
+</body>
+</html>
